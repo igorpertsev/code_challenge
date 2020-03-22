@@ -3,7 +3,7 @@ module CodeChallenge
     class Info < Base
       class << self
         def call(api_url, zip)
-          JSON.parse(RestClient.get("#{api_url}/info/#{zip}"))
+          JSON.parse(RestClient.get("#{api_url}/info/#{zip}").body)
         end
       end
     end
