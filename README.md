@@ -42,6 +42,8 @@ To make api call you can use one of 2 methods `import` and `info`
 `Info` method used to fetch information for ZIP adress from API. It returns full list of information about specified ZIP if present on server. In other cases it returns empty response values.
 
 ```ruby
+  require 'code_challenge'
+  
   client = CodeChallenge::Client.new
   client.info('00501')
 
