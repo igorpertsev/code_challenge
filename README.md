@@ -1,8 +1,6 @@
 # CodeChallenge
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/code_challenge`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to my cool gem! Please, include it into your project in order to have easy acces to coding challenge API application.
 
 ## Installation
 
@@ -22,7 +20,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Please use `CodeChallenge::Client` class to access API. You can provide you custom url if needed for testing purpose by passing it to client inititalizer like this
+
+```ruby
+  CodeChallenge::Client.new('some funky URL')
+```
+
+To make api call you can use one of 2 methods `import` and `info`
+
+`Import` method used to upload new data to API server. Data will be uploaded and then parsed in backgroud. Response contains information about request status. It accept 2 parameters, that are file names for zip_to_cbsa file and cbsa_to_msa file respectively.
+
+```ruby
+  client = CodeChallenge::Client.new
+  client.import('path/to/zip_to_cbsa', 'path/to/cbsa_to_msa')
+```
+
+`Info` method used to fetch information for ZIP adress from API. It returns full list of information about specified ZIP if present on server. In other cases it returns empty response values.
+
+```ruby
+  client = CodeChallenge::Client.new
+  client.info('00501')
+
+  #  => {"cbsa"=>"99999", "name"=>"N/A", "lsad"=>"N/A", "pop_2010"=>"N/A", "pop_2011"=>"N/A", "pop_2012"=>"N/A", "pop_2013"=>"N/A", "pop_2014"=>"N/A", "pop_2015"=>"N/A", "zip"=>"505"}
+```
 
 ## Development
 
@@ -37,7 +57,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the CodeChallenge project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/code_challenge/blob/master/CODE_OF_CONDUCT.md).
