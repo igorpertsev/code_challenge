@@ -23,6 +23,8 @@ Or install it yourself as:
 Please use `CodeChallenge::Client` class to access API. You can provide you custom url if needed for testing purpose by passing it to client inititalizer like this
 
 ```ruby
+  require 'code_challenge'
+  
   CodeChallenge::Client.new('some funky URL')
 ```
 
@@ -31,6 +33,8 @@ To make api call you can use one of 2 methods `import` and `info`
 `Import` method used to upload new data to API server. Data will be uploaded and then parsed in backgroud. Response contains information about request status. It accept 2 parameters, that are file names for zip_to_cbsa file and cbsa_to_msa file respectively.
 
 ```ruby
+  require 'code_challenge'
+
   client = CodeChallenge::Client.new
   client.import('path/to/zip_to_cbsa', 'path/to/cbsa_to_msa')
 ```
